@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Yritys Oy</title>
+        <link rel="stylesheet" href="theme.css">
+    </head>
+
+    <body>
+        <center>
+        <h1>Yritys Oy</h1>
+
+        <button onclick="etusivulle()" class="button button2">Etusivu</button>
+        <button onclick="yhteystiedot()" class="button button2">Yhteystiedot</button>
+        <button onclick="tuotesivulle()" class="button button2">Tuotteet</button>
+        <button onclick="tumma()" class="button button2">Tumma teema</button>
+        <button onclick="vaalea()" class="button button2">Vaalea teema</button>
+
+        <div id="root"></div>
+        </center> 
+
+        <script>
+            var teema = 'vaalea'
+
+            if (localStorage.getItem('teema') == 'tumma')
+            {
+                teema = 'tumma'
+                tumma()
+            }
+            
+
+             function tumma() {
+                teema = 'tumma'
+                localStorage.setItem('teema', 'tumma')
+               document.getElementsByTagName("body")[0].style.backgroundColor = 'black'
+               document.getElementsByTagName("h1")[0].style.color = 'lightGrey'
+               document.getElementsByTagName("h3")[0].style.color = 'white'            
+           }
+
+           function vaalea() {
+                teema = 'vaalea'
+                localStorage.setItem('teema', 'vaalea')
+               document.getElementsByTagName("body")[0].style.backgroundColor = 'white'
+               document.getElementsByTagName("h1")[0].style.color = 'red'
+               document.getElementsByTagName("h3")[0].style.color = 'darkGrey'            
+           }
+
+           function etusivulle() {
+               let x = `<h3>Osaavaa palvelua jo vuodesta 2005</h3>`
+               document.getElementById("root").innerHTML = x
+               if (teema === 'tumma')
+               {
+               tumma()
+               }
+               else {
+                vaalea()
+               }
+               
+           }
+           function yhteystiedot() {
+               let x = `<h3>Yhteystiedot</h3>`
+               document.getElementById("root").innerHTML = x
+               if (teema === 'tumma')
+               {
+               tumma()
+               }
+               else {
+                vaalea()
+               }
+              
+           }
+           function tuotesivulle() {
+               let x = `<h3>Tuotteet</h3>`
+               document.getElementById("root").innerHTML = x
+               if (teema === 'tumma')
+               {
+               tumma()
+               }
+               else {
+                vaalea()
+               }
+           }
+
+        </script>
+
+    </body>
+
+</html>
